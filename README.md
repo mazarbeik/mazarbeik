@@ -29,7 +29,7 @@ With a background spanning mechanical engineering to computer science, I bring a
 
 ## 🎯 Current Focus
 
-I'm currently working on **reinforcement learning algorithms for optimal timing of medical interventions** in critically ill patients, particularly focusing on renal replacement therapy. This work combines deep learning, clinical data analysis, and decision theory to improve patient outcomes.
+I'm currently working on **reinforcement learning algorithms for optimal timing of medical interventions** in critically ill patients. This work combines reinforcement learning, deep learning, clinical data analysis, and decision theory to improve patient outcomes.
 
 ## 📚 Selected Publications
 
