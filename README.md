@@ -13,7 +13,6 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohammad-mahdi-azarbeik-757597201/)
 [![Google Scholar](https://img.shields.io/badge/Scholar-4285F4?style=flat-square&logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?authuser=1&user=tVbfK3AAAAAJ)
 [![Email](https://img.shields.io/badge/Email-EA4335?style=flat-square&logo=gmail&logoColor=white)](mailto:mm.azarbeik@gmail.com)
-![Profile Views](https://komarev.com/ghpvc/?username=azarbeik&color=blue&style=flat-square)
 
 </div>
 
@@ -217,5 +216,13 @@ we're writing the future of medicine."*
 **⭐ If you find my research interesting, consider starring my repositories!**
 
 ![Wave](https://raw.githubusercontent.com/mayhemantt/mayhemantt/Update/svg/Bottom.svg)
+
+</div>
+
+---
+
+<div align="center">
+
+![Profile Views](https://komarev.com/ghpvc/?username=yourusername&color=blueviolet&style=flat-square)
 
 </div>
