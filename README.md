@@ -62,9 +62,10 @@ Developing distributed learning methods for sensitive clinical data without comp
 
 | Year | Title | Venue |
 |------|-------|-------|
-| 2025 | 🏥 **Optimal timing for renal replacement therapy using reinforcement learning** | *Journal of Critical Care* |
-| 2024 | 🔍 **TU Wien at SemEval-2024: Hallucination detection in LLMs** | *SemEval-2024* |
-| 2023 | 🤖 **Augmenting inertial motion capture with SLAM using EKF and SRUKF** | *Measurement* |
+| 2026 | **Learning and evaluating improved reinforcement learning-based policies for sepsis treatment on MIMIC-IV** | *Journal of Critical Care* |
+| 2025 | **Optimal timing for renal replacement therapy using reinforcement learning** | *Journal of Critical Care* |
+| 2024 | **TU Wien at SemEval-2024: Hallucination detection in LLMs** | *SemEval-2024* |
+| 2023 | **Augmenting inertial motion capture with SLAM using EKF and SRUKF** | *Measurement* |
 
 📖 **[Full publication list on Google Scholar →](https://scholar.google.com/citations?authuser=1&user=tVbfK3AAAAAJ)**
 
