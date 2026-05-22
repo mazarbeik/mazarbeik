@@ -14,9 +14,10 @@
 
 ## 🧬 Who I Am
 
-**Ph.D. Candidate at TU Wien** · Researcher at the **Ludwig Boltzmann Institute for Digital Health and Patient Safety** · **Medical University of Vienna**
+**Ph.D. Candidate at TU Wien**
+**Researcher at Medical University of Vienna**
 
-I build reinforcement learning systems that operate where the stakes are highest: the **intensive care unit**. My research transforms raw clinical data into actionable, life-saving decision support — giving clinicians an intelligent partner in the most critical moments.
+I build reinforcement learning systems that operate where the stakes are highest: the **intensive care unit**. My research transforms raw clinical data into actionable, life-saving decision support.
 
 ---
 
@@ -27,7 +28,7 @@ I build reinforcement learning systems that operate where the stakes are highest
 <td valign="top" width="50%">
 
 **🏥 Clinical AI & ICU Decision Support**
-Using RL to determine optimal intervention timing for critically ill patients — improving survival rates, reducing complications, and supporting clinicians in real time.
+Using RL to determine optimal intervention timing for critically ill patients, improving survival rates, reducing complications, and supporting clinicians in real time.
 
 **🤖 Generative AI Safety**
 Detecting and mitigating hallucinations in large language models, making LLMs safer and more reliable in high-stakes environments.
@@ -119,7 +120,7 @@ TU Wien (Ph.D. in progress)
 │   └── 💻 Data-oriented Programming
 │
 ├── Ludwig Boltzmann Institute for Digital Health & Patient Safety
-│   └── Researcher (Feb 2025 – Present)
+│   └── Researcher (Feb 2025 – April 2026)
 │
 └── Medical University of Vienna
     └── Researcher (Jul 2025 – Present)
@@ -131,7 +132,6 @@ TU Wien (Ph.D. in progress)
 
 ```diff
 + Multi-agent reinforcement learning for collaborative clinical decision-making
-+ LLM alignment, interpretability, and safety in medical contexts
 + Real-time deployment of clinical AI at the bedside
 + Federated learning for privacy-preserving healthcare AI
 ```
