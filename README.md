@@ -12,17 +12,6 @@
 
 </div>
 
----
-
-<div align="center">
-
-> *"In the critical care unit, every algorithm has the potential to save a life.*
-> *At the intersection of AI and healthcare, we're not just writing code — we're writing the future of medicine."*
-
-</div>
-
----
-
 ## 🧬 Who I Am
 
 **Ph.D. Candidate at TU Wien** · Researcher at the **Ludwig Boltzmann Institute for Digital Health and Patient Safety** · **Medical University of Vienna**
