@@ -12,68 +12,28 @@
 <a href="https://mazarbeik.github.io/azarbeik/cv/Azarbeik_CV.pdf"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-cv-dark.svg"><img src="assets/btn-cv-light.svg" height="38" alt="CV (PDF)"></picture></a>
 </p>
 
-I'm Mahdi, a machine-learning researcher in Vienna. I'm a researcher at the [Medical University of Vienna](https://www.meduniwien.ac.at/) and a PhD candidate in Computer Science at [TU Wien](https://www.tuwien.at/en/). My background is in mechanical engineering, where I worked on state estimation and sensor fusion. Since then I have worked on reinforcement learning, language models and clinical decision support; the common thread is quantifying how reliable an estimate is.
+I'm Mahdi, a machine-learning researcher in Vienna. I'm a researcher at the [Medical University of Vienna](https://www.meduniwien.ac.at/) and a PhD candidate in Computer Science at [TU Wien](https://www.tuwien.at/en/). My background is in mechanical engineering, where I worked on state estimation and sensor fusion; the common thread through my work since is quantifying how reliable an estimate is.
 
 ## Research
 
-My work spans state estimation from noisy sensors, reinforcement learning and language models, and clinical decision support. Across all three, the aim is to learn from imperfect data and to quantify how far the results can be trusted.
+My work spans three fields, shown here in the order I came to them. Across all three, the aim is to learn from imperfect data and to quantify how far the results can be trusted.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/fields-dark.svg">
   <img src="assets/fields-light.svg" width="100%" alt="One signal line through three fields. 01, Sensing and estimation (M.Sc., Sharif University of Technology): many noisy measurements, one estimate. 02, Learning systems (PhD, TU Wien): one state, many possible decisions. 03, Clinical decision support (Medical University of Vienna): vital signs, decided step by step.">
 </picture>
 
-### Selected projects
+### 01 · Sensing & estimation
+
+Kalman filtering and sensor fusion that turn low-cost, noisy sensor signals into reliable estimates of motion, together with their remaining uncertainty.
 
 <table>
-<tr>
-<td width="300"><a href="https://mazarbeik.github.io/azarbeik/#sepsis"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-sepsis-dark.svg"><img src="assets/project-sepsis-light.svg" width="300" alt="Schematic: the path clinicians took through a grid of patient states, and the one a learned policy would take."></picture></a></td>
-<td>
-
-**Treatment strategies for sepsis**<br>
-<sub>Clinical decision support · 2025 · First author</sub>
-
-Learning fluid and vasopressor dosing policies for sepsis from intensive-care records (MIMIC-IV), and comparing off-policy evaluation methods, whose choice can change which policy appears best.
-
-Conference abstract in *Journal of Critical Care* (ICCAI 2025, Vienna); full paper in preparation.<br>
-[Abstract](https://doi.org/10.1016/j.jcrc.2025.155385)
-
-</td>
-</tr>
-<tr>
-<td width="300"><a href="https://mazarbeik.github.io/azarbeik/#rrt"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-rrt-dark.svg"><img src="assets/project-rrt-light.svg" width="300" alt="Schematic: a marker of kidney function rising over 24 hours in 4-hour steps, and the question of when to start renal replacement therapy."></picture></a></td>
-<td>
-
-**Timing renal replacement therapy**<br>
-<sub>Clinical decision support · 2024–2025 · Co-author</sub>
-
-Learning when to start renal replacement therapy in critically ill patients with acute kidney injury, using reinforcement learning with high-confidence off-policy evaluation.
-
-Conference abstract in *Journal of Critical Care* (ICCAI 2024); preprint on Research Square (2025).<br>
-[Abstract](https://doi.org/10.1016/j.jcrc.2024.154964) · [Preprint](https://doi.org/10.21203/rs.3.rs-6243566/v1)
-
-</td>
-</tr>
-<tr>
-<td width="300"><a href="https://mazarbeik.github.io/azarbeik/#hallucination"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-halluc-dark.svg"><img src="assets/project-halluc-light.svg" width="300" alt="Schematic: lines of generated text are scanned and two spans are flagged as hallucinations."></picture></a></td>
-<td>
-
-**Hallucination detection in language models**<br>
-<sub>Learning systems · 2024 · TU Wien team</sub>
-
-Detecting hallucinations in language-model outputs (SemEval-2024 Task 6) with an ensemble that combines black-box detectors and detectors reading the model's internal activations.
-
-Ranked 3rd in the model-aware track and 8th in the model-agnostic track; paper in the SemEval-2024 proceedings (ACL).<br>
-[Paper (PDF)](https://mazarbeik.github.io/azarbeik/papers/arzt-azarbeik-2024-semeval-hallucination.pdf) · [DOI](https://doi.org/10.18653/v1/2024.semeval-1.173) · [Team code](https://github.com/kleines-gespenst/shroom-hackathon)
-
-</td>
-</tr>
 <tr>
 <td width="300"><a href="https://mazarbeik.github.io/azarbeik/#motion"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-motion-dark.svg"><img src="assets/project-motion-light.svg" width="300" alt="Schematic: an arm with two inertial sensors, and the estimated wrist path with its uncertainty ellipses."></picture></a></td>
 <td>
 
 **Inertial motion capture with SLAM**<br>
-<sub>Sensing & estimation · 2023 · First author</sub>
+<sub>2023 · First author</sub>
 
 Fusing drifting inertial sensors with camera-based SLAM in extended and square-root unscented Kalman filters to track a human arm, validated against an optical motion-capture system.
 
@@ -87,12 +47,68 @@ Journal article in *Measurement* (2023), with an open dataset and a graphical-ab
 <td>
 
 **AI-enabled wearables: EU-TRAINS**<br>
-<sub>Sensing & estimation · 2025–2026 · Horizon Europe</sub>
+<sub>2025–2026 · Horizon Europe</sub>
 
 Lead researcher for the Ludwig Boltzmann Institute for Digital Health and Patient Safety on a Horizon Europe project developing AI-enabled wearables for multisport training and remote healthcare.
 
 Funded by Horizon Europe, grant agreement 101130495.<br>
 [CORDIS](https://cordis.europa.eu/project/id/101130495) · [Project site](https://eu-trains.eu/)
+
+</td>
+</tr>
+</table>
+
+### 02 · Learning systems
+
+Offline reinforcement learning, which learns decision policies from logged data rather than by trial and error, and off-policy evaluation of those policies; these are the methods behind the clinical work in 03. Also hallucination detection in large language models.
+
+<table>
+<tr>
+<td width="300"><a href="https://mazarbeik.github.io/azarbeik/#hallucination"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-halluc-dark.svg"><img src="assets/project-halluc-light.svg" width="300" alt="Schematic: lines of generated text are scanned and two spans are flagged as hallucinations."></picture></a></td>
+<td>
+
+**Hallucination detection in language models**<br>
+<sub>2024 · TU Wien team</sub>
+
+Detecting hallucinations in language-model outputs (SemEval-2024 Task 6) with an ensemble that combines black-box detectors and detectors reading the model's internal activations.
+
+Ranked 3rd in the model-aware track and 8th in the model-agnostic track; paper in the SemEval-2024 proceedings (ACL).<br>
+[Paper (PDF)](https://mazarbeik.github.io/azarbeik/papers/arzt-azarbeik-2024-semeval-hallucination.pdf) · [DOI](https://doi.org/10.18653/v1/2024.semeval-1.173) · [Team code](https://github.com/kleines-gespenst/shroom-hackathon)
+
+</td>
+</tr>
+</table>
+
+### 03 · Clinical decision support
+
+Treatment strategies for sepsis and renal replacement therapy, learned from intensive-care records, evaluated with several off-policy methods and reviewed with physicians for clinical plausibility.
+
+<table>
+<tr>
+<td width="300"><a href="https://mazarbeik.github.io/azarbeik/#rrt"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-rrt-dark.svg"><img src="assets/project-rrt-light.svg" width="300" alt="Schematic: a marker of kidney function rising over 24 hours in 4-hour steps, and the question of when to start renal replacement therapy."></picture></a></td>
+<td>
+
+**Timing renal replacement therapy**<br>
+<sub>2024–2025 · Co-author</sub>
+
+Learning when to start renal replacement therapy in critically ill patients with acute kidney injury, using reinforcement learning with high-confidence off-policy evaluation.
+
+Conference abstract in *Journal of Critical Care* (ICCAI 2024); preprint on Research Square (2025).<br>
+[Abstract](https://doi.org/10.1016/j.jcrc.2024.154964) · [Preprint](https://doi.org/10.21203/rs.3.rs-6243566/v1)
+
+</td>
+</tr>
+<tr>
+<td width="300"><a href="https://mazarbeik.github.io/azarbeik/#sepsis"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-sepsis-dark.svg"><img src="assets/project-sepsis-light.svg" width="300" alt="Schematic: the path clinicians took through a grid of patient states, and the one a learned policy would take."></picture></a></td>
+<td>
+
+**Treatment strategies for sepsis**<br>
+<sub>2025 · First author</sub>
+
+Learning fluid and vasopressor dosing policies for sepsis from intensive-care records (MIMIC-IV), and comparing off-policy evaluation methods, whose choice can change which policy appears best.
+
+Conference abstract in *Journal of Critical Care* (ICCAI 2025, Vienna); full paper in preparation.<br>
+[Abstract](https://doi.org/10.1016/j.jcrc.2025.155385)
 
 </td>
 </tr>
@@ -117,25 +133,22 @@ Also listed on [Google Scholar](https://scholar.google.com/citations?user=tVbfK3
 
 ## Experience
 
-- `2025–now` **Researcher**, Medical University of Vienna. Anaesthesia and intensive care medicine.
-- `2025–2026` **Researcher, EU-TRAINS**, Ludwig Boltzmann Institute for Digital Health and Patient Safety.
-- `2023–now` **PhD candidate, Computer Science (Informatics)**, TU Wien. Offline reinforcement learning, off-policy evaluation and language models; University Assistant 2023–2025.
-- `2020–2023` **M.Sc., Mechanical Engineering**, Sharif University of Technology. State estimation and sensor fusion.
-- `2016–2020` **B.Sc., Mechanical Engineering**, K. N. Toosi University of Technology, Tehran.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/path-dark.svg">
+  <img src="assets/path-light.svg" width="100%" alt="Path from Tehran to Vienna. 2016 to 2020: B.Sc., Mechanical Engineering, K. N. Toosi University of Technology. 2020 to 2023: M.Sc., Mechanical Engineering, Sharif University of Technology, state estimation and sensor fusion. Since 2023: PhD candidate in Computer Science (Informatics), TU Wien, and University Assistant from 2023 to 2025, on offline reinforcement learning, off-policy evaluation and language models. February 2025 to April 2026: Researcher, EU-TRAINS, Ludwig Boltzmann Institute for Digital Health and Patient Safety. Since July 2025: Researcher, Medical University of Vienna, anaesthesia and intensive care medicine.">
+</picture>
 
-**Teaching.** Teaching assistant for Reinforcement Learning, Generative AI and Data-oriented Programming Paradigms at TU Wien, and for Numerical Analysis at K. N. Toosi University of Technology.<br>
+**Teaching assistant.** Reinforcement Learning, Generative AI and Data-oriented Programming Paradigms at TU Wien; Numerical Analysis at K. N. Toosi University of Technology.
+
 **Peer review.** *PLOS Digital Health*, *Measurement*, *Journal of Intelligent & Robotic Systems* and *IEEE Sensors Journal*.
 
-## Toolkit
+**Toolkit.** `Python` `PyTorch` `TensorFlow` `scikit-learn` `SQL` `BigQuery` `PostgreSQL` `Google Cloud` `Git` `MIMIC-IV` `ViennaAIdb` `MATLAB` `ROS` `Arduino`
 
-`Python` `PyTorch` `TensorFlow` `scikit-learn` `SQL` `BigQuery` `PostgreSQL` `Google Cloud` `Git` `MIMIC-IV` `ViennaAIdb` `MATLAB` `ROS` `Arduino`
+## Next
 
-## Get in touch
-
-The research directions I want to take on next:
-
-1. Multi-agent reinforcement learning for collaborative clinical decisions
-2. What it takes to bring clinical AI to the bedside
-3. Federated learning on sensitive clinical data
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/next-dark.svg">
+  <img src="assets/next-light.svg" width="100%" alt="Next research directions: 01, multi-agent reinforcement learning for collaborative clinical decisions; 02, what it takes to bring clinical AI to the bedside; 03, federated learning on sensitive clinical data.">
+</picture>
 
 I'm glad to discuss research on reinforcement learning in healthcare, clinical decision support and the evaluation of clinical AI. Email is the best way to reach me: [mm.azarbeik@gmail.com](mailto:mm.azarbeik@gmail.com).

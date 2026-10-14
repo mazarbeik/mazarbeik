@@ -41,6 +41,24 @@ FIELDS = [  # the website's research canvas, laid out along one time axis instea
 
 PROJECTS = ["sepsis", "rrt", "halluc", "motion", "wear"]  # one schematic per project card, drawn below
 
+PATH = [  # the website's path from Tehran to Vienna; each stop is coloured by its research field (None: before them)
+    dict(year="2016", title="B.Sc., Mechanical Engineering", place="K. N. Toosi University of Technology",
+         when="2016 to 2020", field=None),
+    dict(year="2020", title="M.Sc., Mechanical Engineering", place="Sharif University of Technology",
+         detail="State estimation and sensor fusion", when="2020 to 2023", field="f_sense"),
+    dict(year="2023", title="PhD & University Assistant", place="TU Wien",
+         detail="Offline RL, off-policy evaluation, language models", when="PhD since 2023", field="f_learn"),
+    dict(year="2025", title="Researcher, EU-TRAINS", place="Ludwig Boltzmann Institute for Digital Health and Patient Safety",
+         when="Feb 2025 to Apr 2026", field="f_sense"),
+    dict(year="Now", title="Researcher", place="Medical University of Vienna",
+         detail="Anaesthesia and intensive care medicine", when="Since Jul 2025", field="f_clin"),
+]
+PLACES = {0: "Tehran", 2: "Vienna"}  # stop index: where the path arrives in that city
+
+NEXT = ["Multi-agent reinforcement learning for collaborative clinical decisions",
+        "What it takes to bring clinical AI to the bedside",
+        "Federated learning on sensitive clinical data"]
+
 LINKS = {  # file key: (label, icon)
     "website": ("Website", "out"),
     "scholar": ("Google Scholar", "out"),
@@ -69,6 +87,13 @@ WINE = {
     "dark": dict(bg="#2b0f18", ink="#f6eadf", ink2="#dec6bd", muted="#bb9b98", rule2="#5e2f3d", accent="#e47f90",
                  accent_text="#f2b4bc", glow=("#f0a096", .14), shade=("#14040a", .38),
                  f_sense="#d6bfa9", f_learn="#e79aa6", f_clin="#f6d2c4"),
+}
+
+STONE = {  # the experience band
+    "light": dict(bg="#ece3d7", ink="#221418", ink2="#4b3a3e", muted="#66555b", rule2="#c2b1a0", accent="#7c1d34",
+                  accent_text="#7c1d34", glow=("#7c1d34", .05), f_sense="#a8927f", f_learn="#c98b92", f_clin="#7c1d34"),
+    "dark": dict(bg="#1b1513", ink="#f3e9e0", ink2="#d3c3ba", muted="#a6938c", rule2="#4a3d38", accent="#c4495f",
+                 accent_text="#eba3ad", glow=("#c4495f", .07), f_sense="#b49f8c", f_learn="#d98a97", f_clin="#c4495f"),
 }
 
 EASE_OUT, EASE_IO, SPRING = "cubic-bezier(.16,1,.3,1)", "cubic-bezier(.76,0,.24,1)", "cubic-bezier(.34,1.4,.64,1)"
@@ -636,6 +661,89 @@ def plate(f, c, name):
             f'{label(f, "Schematic", 10, PW - 16, PH - 13, c["muted"], "end", 0.1)}\n</svg>\n')
 
 
+# ---------------------------------------------------------------- path ------
+# The website's experience band: a rail from Tehran to Vienna with one stop per position or degree. Each stop takes
+# its research field's colour from the fields figure, and the rail runs on, dashed, into what comes next.
+
+def path(f, c):
+    x0, x1 = 40, FW - 40
+    col = (x1 - x0) / len(PATH)
+    rail = 74
+    out, bottom = [], 0
+    for i, place in PLACES.items():
+        out.append(label(f, place, 11.5, x0 + i * col, rail - 26, c["muted"]))
+    last = x0 + (len(PATH) - 1) * col
+    out.append(f'<path d="M{x0} {rail}H{last:.1f}" stroke="{c["accent"]}" stroke-width="2"/>')
+    out.append(f'<path d="M{last:.1f} {rail}H{x1 - 6}" stroke="{c["accent"]}" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>')
+    out.append(f'<path d="M{x1 - 10} {rail - 5}L{x1} {rail}L{x1 - 10} {rail + 5}" fill="none" stroke="{c["accent"]}" stroke-width="2" '
+               f'stroke-linecap="round" stroke-linejoin="round"/>')
+    out.append(label(f, "Next", 11.5, x1, rail - 26, c["accent_text"], anchor="end"))
+    for i, stop in enumerate(PATH):
+        x, w = x0 + i * col, col - 22
+        now = i == len(PATH) - 1
+        if now:
+            out.append(f'<circle cx="{x:.1f}" cy="{rail}" r="13" fill="{c["bg"]}" stroke="{c["accent"]}" stroke-width="1.5"/>')
+        if stop["field"]:
+            out.append(f'<circle cx="{x:.1f}" cy="{rail}" r="6.5" fill="{c[stop["field"]]}" stroke="{c["bg"]}" stroke-width="3" paint-order="stroke"/>')
+        else:
+            out.append(f'<circle cx="{x:.1f}" cy="{rail}" r="6" fill="{c["bg"]}" stroke="{c["accent"]}" stroke-width="2"/>')
+        y = rail + 64
+        year_face = f["italic"] if now else f["serif"]
+        out.append(text(year_face, stop["year"], 32, x - 1, y, c["accent_text"] if now else c["ink"], -0.02))
+        y += 34
+        for ln in wrap(f["sans_medium"], stop["title"], 15, w):
+            out.append(text(f["sans_medium"], ln, 15, x, y, c["ink"], -0.005))
+            y += 20
+        y += 4
+        for ln in wrap(f["sans"], stop["place"], 14, w):
+            out.append(text(f["sans"], ln, 14, x, y, c["ink2"]))
+            y += 19
+        if stop.get("detail"):
+            y += 4
+            for ln in wrap(f["sans"], stop["detail"], 14, w):
+                out.append(text(f["sans"], ln, 14, x, y, c["muted"]))
+                y += 19
+        y += 12
+        for ln in wrap(f["mono_medium"], stop["when"].upper(), 10.5, w, 0.08):
+            out.append(label(f, ln, 10.5, x, y, c["muted"], tracking=0.08))
+            y += 16
+        bottom = max(bottom, y)
+    fh = round(bottom + 22)
+    desc = " ".join(f"{s['year']}: {s['title']}, {s['place']}" + (f", {s['detail'].lower()}" if s.get("detail") else "") +
+                    f" ({s['when']})." for s in PATH)
+    return (svg_open(FW, fh, "Path from Tehran to Vienna", desc) +
+            f'<defs>{radial("glow", c["glow"])}<clipPath id="panel"><rect width="{FW}" height="{fh}" rx="18"/></clipPath></defs>\n'
+            f'<g clip-path="url(#panel)"><rect width="{FW}" height="{fh}" fill="{c["bg"]}"/>'
+            f'<ellipse cx="{FW}" cy="0" rx="{FW * 0.6}" ry="{fh}" fill="url(#glow)"/></g>\n' +
+            "".join(o + "\n" for o in out) + "</svg>\n")
+
+
+# ---------------------------------------------------------------- next ------
+# The closing wine panel, as on the website's contact chapter: the research directions to take on next.
+
+def next_panel(f, c):
+    x0, x1 = 40, FW - 40
+    out = [label(f, "Research directions", 12, x0, 58, c["accent_text"])]
+    y = 86
+    for i, item in enumerate(NEXT):
+        out.append(f'<path d="M{x0} {y}H{x1}" stroke="{c["rule2"]}"/>')
+        y += 46
+        out.append(label(f, f"{i + 1:02d}", 12, x0, y - 3, c["accent_text"]))
+        for ln in wrap(f["serif"], item, 27, x1 - x0 - 64, -0.012):
+            out.append(text(f["serif"], ln, 27, x0 + 64, y, c["ink"], -0.012))
+            y += 34
+        y += 4
+    out.append(f'<path d="M{x0} {y}H{x1}" stroke="{c["rule2"]}"/>')
+    fh = round(y + 40)
+    return (svg_open(FW, fh, "Next research directions", "; ".join(NEXT) + ".") +
+            f'<defs>{radial("glow", c["glow"])}{radial("shade", c["shade"])}'
+            f'<clipPath id="panel"><rect width="{FW}" height="{fh}" rx="18"/></clipPath></defs>\n'
+            f'<g clip-path="url(#panel)"><rect width="{FW}" height="{fh}" fill="{c["bg"]}"/>'
+            f'<ellipse cx="{FW * 0.88}" cy="0" rx="{FW * 0.7}" ry="300" fill="url(#glow)"/>'
+            f'<ellipse cx="0" cy="{fh}" rx="{FW * 0.6}" ry="260" fill="url(#shade)"/></g>\n' +
+            "".join(o + "\n" for o in out) + "</svg>\n")
+
+
 # ---------------------------------------------------------------- buttons ---
 # The website's pills: a hairline capsule, the label, and the link's icon (out, arrow for e-mail, down for the CV).
 
@@ -669,6 +777,8 @@ if __name__ == "__main__":
         page, wine = PAGE[theme], WINE[theme]
         (out / f"header-{theme}.svg").write_text(header(fonts, page))
         (out / f"fields-{theme}.svg").write_text(fields(fonts, wine))
+        (out / f"path-{theme}.svg").write_text(path(fonts, STONE[theme]))
+        (out / f"next-{theme}.svg").write_text(next_panel(fonts, wine))
         for name in PROJECTS:
             (out / f"project-{name}-{theme}.svg").write_text(plate(fonts, page, name))
         for key, (label_text, icon) in LINKS.items():
